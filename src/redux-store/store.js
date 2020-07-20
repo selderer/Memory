@@ -1,8 +1,9 @@
-const { default: cardFlipReducer } = require("./cardFlipReducer");
+import imagesReducer from "./imagesReducer";
+
 const { createStore, combineReducers } = require("redux");
 
 let reducers = combineReducers({
-    cardFlip: cardFlipReducer
+    cardFlip: imagesReducer,
 });
 
 const store = createStore(reducers);

@@ -1,20 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import question from '../../assets/images/question.png';
 import s from './Card.module.scss';
-import kittie from '../../assets/images/kittie.png'
 
 const Card = (props) => {
-    return (<>
+    let [flipped, flipCard] = useState(false);
 
-        <div className={s.item + " " + s.flip} onClick={props.flipCard}>
-            {props.flipped ?
-                <img src={kittie} alt="" className={s.backFace} />
+    let imageRef = React.createRef();
+
+    let showBackImage = () => {
+        flipCard(true);
+    }
+
+    return (<>
+        <div className={s.item} onClick={showBackImage}>
+            {flipped ?
+                <div>
+                    {props.images
+                        .sort(() => Math.random() - 0.5)
+                        .map((img, i) => {
+                            return (
+                                <div>
+                                    <img
+                                        ref={imageRef}
+                                        className={s.backFace}
+                                        src={img.image}
+                                        key={i}
+                                        alt={img.name}
+                                    />
+                                </div>
+                            )
+                        }
+                        )
+                    }
+                </div>
                 :
-                <img src={question} alt="" className={s.frontFace} />
+                <div>
+                    <img src={question} alt="" className={s.frontFace} />
+                </div>
             }
         </div>
-    </>
-    )
+    </>)
 }
 
+console.log(Math.random() - 0.5);
 export default Card;

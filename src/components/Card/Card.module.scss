@@ -3,27 +3,26 @@
     box-shadow: 1px 2px 5px 2px rgb(243, 241, 241);
     border-radius: 8px;
     display: block;
-    transition: linear .2s;
-    transform-style: preserve-3d;
-    transform: scale(1);
+    transition: linear .5s;
 
     .frontFace {
         width: 200px;
     }
 
     .backFace {
-        
+        background: url("/src/assets/images/ashot.png");
         width: 200px;
+        backface-visibility: hidden;
     }
 
 }
+
 
 .item:hover {
     box-shadow: 2px 2px 12px 3px rgb(243, 241, 241);
 }
 
 .item:active {
-    transform: rotateY(180deg);
     transform: scale(0.97);
     transition: transform .2s;
 }
