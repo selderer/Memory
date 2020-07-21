@@ -1,46 +1,33 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import question from '../../assets/images/question.png';
 import s from './Card.module.scss';
 
 const Card = (props) => {
-    let [flipped, flipCard] = useState(false);
+  const [image, setImage] = useState('');
+  const [opened, setOpened] = useState(false);
 
-    let imageRef = React.createRef();
+  const loadImage = async () => {
+    const data = await import(`../../assets/images/${1}.png`);
+    const {default: image} = data;
+    setImage(image);
+  }
 
-    let showBackImage = () => {
-        flipCard(true);
-    }
+  useEffect(() => {
+    loadImage();
+  }, []);
 
-    return (<>
-        <div className={s.item} onClick={showBackImage}>
-            {flipped ?
-                <div>
-                    {props.images
-                        .sort(() => Math.random() - 0.5)
-                        .map((img, i) => {
-                            return (
-                                <div>
-                                    <img
-                                        ref={imageRef}
-                                        className={s.backFace}
-                                        src={img.image}
-                                        key={i}
-                                        alt={img.name}
-                                    />
-                                </div>
-                            )
-                        }
-                        )
-                    }
-                </div>
-                :
-                <div>
-                    <img src={question} alt="" className={s.frontFace} />
-                </div>
-            }
-        </div>
-    </>)
+  const flip = () => {
+    setOpened(!opened);
+    props.flip(props.item);
+  }
+
+  return (
+    <div className={s.item} onClick={flip}>
+      <div>
+        <img src={!opened ? question : image} alt="" className={s.frontFace}/>
+      </div>
+    </div>
+  )
 }
 
-console.log(Math.random() - 0.5);
 export default Card;

@@ -6,8 +6,6 @@
 
 .container {
     display: grid;
-    grid-template-columns: repeat(4, 200px);
-    grid-template-rows: repeat(3, 210px);
     gap: 15px;
     justify-content: center;
 	margin-top: 10%;

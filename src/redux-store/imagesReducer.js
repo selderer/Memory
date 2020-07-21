@@ -1,9 +1,9 @@
-import ashot from '../assets/images/ashot.png';
-import dogInDrugs from '../assets/images/dogInDrugs.png';
-import kawai from '../assets/images/kawai.png';
-import kittie from '../assets/images/kittie.png';
-import koala from '../assets/images/koala.png';
-import panda from '../assets/images/panda.png';
+import ashot from '../assets/images/1.png';
+import dogInDrugs from '../assets/images/1.png';
+import kawai from '../assets/images/1.png';
+import kittie from '../assets/images/1.png';
+import koala from '../assets/images/1.png';
+import panda from '../assets/images/1.png';
 
 const SET_IMAGE = 'set-image';
 

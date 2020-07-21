@@ -1,10 +1,14 @@
 import React from 'react';
 import Game from './components/Game/Game';
+import store from "./redux-store/store";
+import {Provider} from "react-redux";
 
 function App() {
   return (
-      <Game />
-    );
+    <Provider store={store}>
+      <Game/>
+    </Provider>
+  );
 }
 
 export default App;
