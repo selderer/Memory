@@ -1,44 +1,36 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect } from 'react';
 import s from './Game.module.scss';
-import Card from "../Card/Card";
-import {shuffle} from "../../helpers/indes";
-import {levelMapping} from "../../assets/constants";
+import { levelMapping } from "../../assets/constants/index";
+import Card from '../Card/Card';
 
 const Game = (props) => {
-  const [level, setLevel] = useState(1);
-  const [data, setData] = useState([]);
-  const [steps, setSteps] = useState(0);
-  const [point, setPoint] = useState(0);
 
   useEffect(() => {
-    let arr = [];
-    for (let i = 1; i <= levelMapping[level].items / 2; i++) {
-      arr.push(i);
-    }
-
-    const shuffledArr = shuffle([...arr, ...arr]);
-
-    setData(shuffledArr);
+    props.setCards();
   }, []);
 
-  const flip = (item) => {
-    setSteps(steps + 1);
-  };
+  let nextLevel1 = () => {
+    props.nextLevel();
+    props.setCards();
+  }
 
   return (
     <div>
-      <h1>Steps: {steps}</h1>
-      <h1>Point: {point}</h1>
+      <h1>Steps: {props.steps}</h1>
+      <h1>Point: {props.point}</h1>
+      <button onClick={nextLevel1}>next level</button>
+
 
       <div className={s.container} style={{
-        gridTemplateColumns: `repeat(${levelMapping[level].columns}, 200px)`,
-        gridTemplateRows: `repeat(${levelMapping[level].rows}, 210px)`
+        gridTemplateColumns: `repeat(${levelMapping[props.level].columns}, 200px)`,
+        gridTemplateRows: `repeat(${levelMapping[props.level].rows}, 210px)`,
+        marginTop: levelMapping[props.level].margins
       }}>
-        {data.map((item, i) => (
+        {props.cards.map((item, i) => (
           <Card
             key={i}
             item={item}
-            flip={flip}
+            setStep={props.setStep}
           />
         ))}
       </div>

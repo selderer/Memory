@@ -9,3 +9,13 @@ export const shuffle = (arr) => {
   }
   return arr;
 }
+
+export const randomArr = (arr, length) => {
+  let rand = Math.floor(Math.random() * length);
+    return arr[rand];
+}
+
+export const spliceArr = (arr, end) => {
+  let slice = arr.slice(1, end);
+  return [...slice];
+}

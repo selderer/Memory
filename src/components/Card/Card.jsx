@@ -1,31 +1,28 @@
-import React, {useEffect, useState} from 'react';
-import question from '../../assets/images/question.png';
+import React, { useState, useEffect } from 'react';
 import s from './Card.module.scss';
+import CardImage from './CardImage/CardImage';
 
 const Card = (props) => {
-  const [image, setImage] = useState('');
   const [opened, setOpened] = useState(false);
 
-  const loadImage = async () => {
-    const data = await import(`../../assets/images/${1}.png`);
-    const {default: image} = data;
-    setImage(image);
+  let openCard = () => {
+    setOpened(true);
+    if (opened === false) {
+        props.setStep();
+    }
+    //props.setPoint();
   }
 
-  useEffect(() => {
-    loadImage();
-  }, []);
-
-  const flip = () => {
-    setOpened(!opened);
-    props.flip(props.item);
-  }
+  let onSuccsess = useEffect(() => {
+    
+  }, [])
 
   return (
-    <div className={s.item} onClick={flip}>
-      <div>
-        <img src={!opened ? question : image} alt="" className={s.frontFace}/>
-      </div>
+    <div className={s.item} onClick={openCard}>
+      <CardImage
+        opened={opened}
+        item={props.item} 
+      />
     </div>
   )
 }
