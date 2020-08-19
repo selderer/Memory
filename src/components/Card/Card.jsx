@@ -8,6 +8,11 @@ const Card = (props) => {
   const [firtsCard, setFirstCard] = useState(null);
   const [secondCard, setSecondCard] = useState(null);
 
+  let resetFirstAndSecondCards = () => {
+    setFirstCard(null);
+    setSecondCard(null);
+  }
+
   let openCard = () => {
     setFlip(true);
     if (flip === false) {
@@ -32,12 +37,14 @@ const Card = (props) => {
 
   let onSuccses = () => {
     setFlip(true);
+    resetFirstAndSecondCards()
   }
 
   let onFail = () => {
     setTimeout(() => {
       setFlip(false);
     }, 1500);
+    resetFirstAndSecondCards();
   }
 
   return (

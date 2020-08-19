@@ -12,7 +12,7 @@ const Game = (props) => {
       props.setCards();
   }, []);
 
-  let nextLevel1 = () => {
+  let nextLevelHandler = () => {
     props.nextLevel();
     props.setCards();
   }
@@ -22,7 +22,7 @@ const Game = (props) => {
       <h1>Steps: {props.steps}</h1>
       <h1>Point: {props.point}</h1>
       {/* <Timer started={started} ></Timer> */}
-      <button onClick={nextLevel1}>next level</button>
+      <button onClick={nextLevelHandler}>next level</button>
 
       <div className={s.container} style={{
         gridTemplateColumns: `repeat(${levelMapping[props.level].columns}, 200px)`,
