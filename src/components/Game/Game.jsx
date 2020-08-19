@@ -7,7 +7,6 @@ import Timer from './Timer/Timer';
 import Start from '../Start/Start';
 
 const Game = (props) => {
-
   useEffect(() => {
       props.setCards();
   }, []);

@@ -21,18 +21,21 @@ const Card = (props) => {
 
     if (!hasFlipped) {
       setHasFlipped(true);
-      setFirstCard(props.item);
+      let first = props.item;
+      setFirstCard(first);
     }
 
     setHasFlipped(false);
-    setSecondCard(props.item);
+    let second = props.item;
+    setSecondCard(second);
+
 
     checkForMatch();
   }
 
   let checkForMatch = () => {
     let match = firtsCard === secondCard;
-    match ? onSuccses() : onFail();
+    !match ? onSuccses() : onFail();
   }
 
   let onSuccses = () => {
