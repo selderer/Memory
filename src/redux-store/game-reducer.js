@@ -38,7 +38,7 @@ const gameReducer = (state = initialState, action) => {
             }
         case SET_CARDS:
             let arr = [];
-            for (let i = 1; i <= levelMapping[state.level].items / 2; i++) {
+            for (let i = 1; i <= levelMapping[state.level].cards / 2; i++) {
                 arr.push(i)
             }
             const shuffledArr = shuffle([...arr, ...arr]);

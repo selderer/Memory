@@ -1,30 +1,26 @@
 export const levelMapping = {
   1: {
-    items: 12,
+    cards: 12,
     rows: 3,
     columns: 4,
-    images: 6,
     margins: '6%'
   },
   2: {
-    items: 16,
+    cards: 16,
     rows: 4,
     columns: 4,
-    images: 8,
     margins: '1.5%'
   },
   3: {
-    items: 20,
+    cards: 20,
     rows: 4,
     columns: 5,
-    images: 10,
     margins: '1.5%'
   },
   4: {
-    items: 30,
+    cards: 30,
     rows: 5,
     columns: 6,
-    images: 15,
     margins: '-2.7%'
   }
 }
