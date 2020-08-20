@@ -2,9 +2,7 @@ import React, { useEffect } from 'react';
 import s from './Game.module.scss';
 import { levelMapping } from "../../assets/constants/index";
 import Card from '../Card/Card';
-import { useState } from 'react';
-import Timer from './Timer/Timer';
-import Start from '../Start/Start';
+import Statistics from '../Statictics/Statistics';
 
 const Game = (props) => {
   useEffect(() => {
@@ -18,10 +16,10 @@ const Game = (props) => {
 
   return (
     <div>
-      <h1>Steps: {props.steps}</h1>
-      <h1>Point: {props.point}</h1>
+      <Statistics steps={props.steps} point={props.point}
+      />
       {/* <Timer started={started} ></Timer> */}
-      <button onClick={nextLevelHandler}>next level</button>
+      <button onClick={nextLevelHandler} className={s.nextButton}>Next Level</button>
 
       <div className={s.container} style={{
         gridTemplateColumns: `repeat(${levelMapping[props.level].columns}, 200px)`,
@@ -33,6 +31,7 @@ const Game = (props) => {
             key={i}
             item={item}
             setStep={props.setStep}
+            setPoint={props.setPoint}
           />
         ))}
       </div>

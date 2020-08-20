@@ -21,13 +21,11 @@ const Card = (props) => {
 
     if (!hasFlipped) {
       setHasFlipped(true);
-      let first = props.item;
-      setFirstCard(first);
+      setFirstCard(props.item);
     }
 
     setHasFlipped(false);
-    let second = props.item;
-    setSecondCard(second);
+    setSecondCard(props.item);
 
 
     checkForMatch();
@@ -35,12 +33,13 @@ const Card = (props) => {
 
   let checkForMatch = () => {
     let match = firtsCard === secondCard;
-    !match ? onSuccses() : onFail();
+    match ? onSuccses() : onFail();
   }
 
   let onSuccses = () => {
     setFlip(true);
-    resetFirstAndSecondCards()
+    resetFirstAndSecondCards();
+    props.setPoint();
   }
 
   let onFail = () => {
@@ -51,7 +50,7 @@ const Card = (props) => {
   }
 
   return (
-    <div className={s.item} onClick={openCard}>
+    <div className={s.card} onClick={openCard}>
       <CardImage
         flip={flip}
         item={props.item}
