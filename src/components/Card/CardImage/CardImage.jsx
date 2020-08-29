@@ -2,27 +2,28 @@ import React, { useState, useEffect } from 'react';
 import question from '../../../assets/images/question.png';
 import s from '../Card.module.scss';
 
-
 const CardImage = (props) => {
-    const [image, setImage] = useState('');
+    // const [image, setImage] = useState('');
 
-    const loadImage = async () => {
-        const data = await import(`../../../assets/images/${props.item}.png`);
-        const { default: image } = data;
+    // const loadImage = async () => {
+    //     const data = await import(`../../../assets/images/${props.item}.png`);
+    //     const { default: cardImage } = data;
 
 
-        setImage(image);
-    }
+    //     setImage(cardImage);
+    // }
 
     useEffect(() => {
-        loadImage();
+        // loadImage();
+        props.setImage(props.item);
     }, []);
 
     return (
         <>
-            <img src={!props.flip ? question : image} alt="" className={s.frontFace} />
+            <img src={!props.flip ? question : `../../${props.image}`} alt="" className={s.frontFace} />
         </>
     )
 }
+
 
 export default CardImage;

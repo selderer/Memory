@@ -7,6 +7,7 @@ import Statistics from '../Statictics/Statistics';
 const Game = (props) => {
   useEffect(() => {
       props.setCards();
+      console.log(levelMapping);
   }, []);
 
   let nextLevelHandler = () => {
@@ -16,22 +17,21 @@ const Game = (props) => {
 
   return (
     <div>
-      <Statistics steps={props.steps} point={props.point}
-      />
-      {/* <Timer started={started} ></Timer> */}
+      <Statistics steps={props.steps} point={props.point}/>
       <button onClick={nextLevelHandler} className={s.nextButton}>Next Level</button>
 
       <div className={s.container} style={{
-        gridTemplateColumns: `repeat(${levelMapping[props.level].columns}, 200px)`,
-        gridTemplateRows: `repeat(${levelMapping[props.level].rows}, 210px)`,
-        marginTop: levelMapping[props.level].margins
+        gridTemplateColumns: `repeat(${levelMapping[1].columns}, 200px)`,
+        gridTemplateRows: `repeat(${levelMapping[1].rows}, 210px)`,
+        marginTop: levelMapping[1].margins
       }}>
         {props.cards.map((item, i) => (
           <Card
             key={i}
             item={item}
             setStep={props.setStep}
-            setPoint={props.setPoint}
+            image={props.image}
+            setImage={props.setImage}
           />
         ))}
       </div>

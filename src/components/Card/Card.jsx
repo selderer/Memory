@@ -4,49 +4,12 @@ import CardImage from './CardImage/CardImage';
 
 const Card = (props) => {
   const [flip, setFlip] = useState(false);
-  const [hasFlipped, setHasFlipped] = useState(false);
-  const [firtsCard, setFirstCard] = useState(null);
-  const [secondCard, setSecondCard] = useState(null);
-
-  let resetFirstAndSecondCards = () => {
-    setFirstCard(null);
-    setSecondCard(null);
-  }
-
+  
   let openCard = () => {
     setFlip(true);
     if (flip === false) {
       props.setStep();
     }
-
-    if (!hasFlipped) {
-      setHasFlipped(true);
-      setFirstCard(props.item);
-    }
-
-    setHasFlipped(false);
-    setSecondCard(props.item);
-
-
-    checkForMatch();
-  }
-
-  let checkForMatch = () => {
-    let match = firtsCard === secondCard;
-    match ? onSuccses() : onFail();
-  }
-
-  let onSuccses = () => {
-    setFlip(true);
-    resetFirstAndSecondCards();
-    props.setPoint();
-  }
-
-  let onFail = () => {
-    setTimeout(() => {
-      setFlip(false);
-    }, 1500);
-    resetFirstAndSecondCards();
   }
 
   return (
@@ -54,6 +17,8 @@ const Card = (props) => {
       <CardImage
         flip={flip}
         item={props.item}
+        image={props.image}
+        setImage={props.setImage}
       />
     </div>
   )
