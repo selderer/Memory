@@ -3,24 +3,23 @@ import question from '../../../assets/images/question.png';
 import s from '../Card.module.scss';
 
 const CardImage = (props) => {
-    // const [image, setImage] = useState('');
+    const [image, setImage] = useState('');
 
-    // const loadImage = async () => {
-    //     const data = await import(`../../../assets/images/${props.item}.png`);
-    //     const { default: cardImage } = data;
+    const loadImage = async () => {
+        const data = await import(`../../../assets/images/${props.item}.png`);
+        const { default: cardImage } = data;
 
 
-    //     setImage(cardImage);
-    // }
+        setImage(cardImage);
+    }
 
     useEffect(() => {
-        // loadImage();
-        props.setImage(props.item);
+        loadImage();
     }, []);
 
     return (
         <>
-            <img src={!props.flip ? question : `../../${props.image}`} alt="" className={s.frontFace} />
+            <img src={!props.flip ? question : image} alt="" className={s.frontFace} />
         </>
     )
 }

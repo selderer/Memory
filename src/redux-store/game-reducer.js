@@ -5,14 +5,14 @@ const NEXT_LEVEL = 'next-level';
 const SET_STEP = 'set-step';
 const SET_POINT = 'set-point';
 const SET_CARDS = 'set-cards';
-const SET_IMAGE = 'set-image';
+// const SET_IMAGE = 'set-image';
 
 let initialState = {
     cards: [],
     level: 1,
     steps: 0,
     point: 0,
-    image: ''
+    // image: ''
 }
 
 const gameReducer = (state = initialState, action) => {
@@ -48,18 +48,18 @@ const gameReducer = (state = initialState, action) => {
                 ...state,
                 cards: shuffledArr
             }
-        case SET_IMAGE: {
-            const loadImage = async () => {
-                const data = await import(`../assets/images/${action.payload.image}.png`);
-                const { default: cardImage } = data;
+        // case SET_IMAGE: {
+        //     const loadImage = async () => {
+        //         const data = await import(`../assets/images/${action.payload.image}.png`);
+        //         const { default: cardImage } = data;
 
-                return {
-                    ...state,
-                    image: cardImage
-                }
-            }
-            return loadImage()
-        }
+        //         return {
+        //             ...state,
+        //             image: cardImage
+        //         }
+        //     }
+        //     return loadImage()
+        // }
         default:
             return state
     }
@@ -69,6 +69,6 @@ export const nextLevel = (level) => ({ type: NEXT_LEVEL, level });
 export const setStep = (step) => ({ type: SET_STEP, step });
 export const setPoint = (point) => ({ type: SET_POINT, point });
 export const setCards = (cards) => ({ type: SET_CARDS, cards });
-export const setImage = (image) => ({ type: SET_IMAGE, payload: {image} });
+// export const setImage = (image) => ({ type: SET_IMAGE, payload: {image} });
 
 export default gameReducer;
